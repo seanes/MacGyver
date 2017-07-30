@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import user from './user';
-import particpants from './particpants';
+import participants from './participants';
 
 const rootReducer = combineReducers({
   user,
-  particpants
+  participants
 });
 
 export default rootReducer;
