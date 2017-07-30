@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from 'react';
+import Helmet from 'react-helmet'
 import { Route, Switch } from 'react-router-dom'
 import HomeView from './views/HomeView';
 import AddView from './views/AddView';
@@ -12,6 +13,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Helmet title='Home' />
         <Header/>
         <Switch>
           <Route exact path='/' component={HomeView} />
