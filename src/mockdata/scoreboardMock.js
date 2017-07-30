@@ -1,4 +1,4 @@
-export default [
+export const participants = [
   {
     "rank": "1",
     "name": "Terje Lønøy",
