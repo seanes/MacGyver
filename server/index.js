@@ -33,6 +33,7 @@ app.use(require('cookie-parser')());
 app.use(require('body-parser').urlencoded({ extended: true }));
 app.use(require('express-session')({ secret: 'Street Fighter V', resave: false, saveUninitialized: false }));
 
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -59,9 +60,21 @@ app.post('/logout',
 
 app.get('/profile',
   require('connect-ensure-login').ensureLoggedIn(),
-  (req, res) => (
-    res.send({ user: req.user, isLoggedIn: true })
-  ));
+  (req, res) => {
+    const profile = db.users.findProfile(req.user.id);
+    if (profile) {
+      res.json({profile: profile});
+    } else {
+      res.status(404).json({error: 'Profile not found'});
+    }
+  });
+
+
+app.get('/highscore',
+  require('connect-ensure-login').ensureLoggedIn(),
+  (req, res) => {
+    res.json(db.users.getHighScore());
+  });
 
 app.listen(port, (err) => {
   if (err) {
