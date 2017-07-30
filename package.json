@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.16.2",
     "flow-bin": "^0.51.1",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
@@ -11,7 +12,9 @@
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.2",
     "react-scripts": "1.0.10",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "redux-react-session": "^2.1.0",
+    "redux-thunk": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

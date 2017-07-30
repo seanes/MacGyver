@@ -1,9 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import Helmet from 'react-helmet'
+
 
 export default () => {
+
   return (
     <div>
+      <Helmet title='Home' />
       <h1>Home</h1>
       <ul>
         <li>
