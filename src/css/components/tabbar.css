@@ -1,0 +1,13 @@
+.tabBar{
+  background: #222836;
+  color: #fff;
+  display: flex;
+}
+
+.tabBar div {
+  color: #575B67;
+  text-decoration: none;
+  text-align: center;
+  flex: 1;
+  padding: 10px 0;
+}

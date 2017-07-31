@@ -11,23 +11,11 @@ class ScoreboardRowComponent extends React.Component {
           first: this.props.participant.rank == "1"
     });
 
-    let rankClassName = cx({
-          rank: true
-    });
-
-    let nameClassName = cx({
-          name: true
-    });
-
-    let scoreClassName = cx({
-          score: true
-    });
-
     return (
       <div className={rowClassName}>
-        <div className={rankClassName}>{this.props.participant.rank}.</div>
-        <div className={nameClassName}>{this.props.participant.name}</div>
-        <div className={scoreClassName}>{this.props.participant.score}</div>
+        <div className={styles.rank}>{this.props.participant.rank}.</div>
+        <div className={styles.name}>{this.props.participant.name}</div>
+        <div className={styles.score}>{this.props.participant.score}</div>
       </div>
     );
   }

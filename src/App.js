@@ -8,6 +8,7 @@ import LoginView from './views/LoginView';
 import PartcipantsView from './views/PartcipantsView';
 import PrivateRoute from './views/PrivateRoute';
 import Header from './components/Header';
+import TabBar from './components/TabBar';
 import { connect } from 'react-redux';
 
 const App = ({ authenticated, user, checked }) =>
@@ -29,7 +30,7 @@ const App = ({ authenticated, user, checked }) =>
           />
           <PrivateRoute
             authenticated={authenticated}
-            path="/partcipants"
+            path="/participants"
             component={PartcipantsView}
           />
           <PrivateRoute
@@ -38,6 +39,7 @@ const App = ({ authenticated, user, checked }) =>
             component={ScoreBoardView}
           />
           <Route path="/login" component={LoginView} />
+          <TabBar/>
         </div>}
     </Router>
   </div>;
