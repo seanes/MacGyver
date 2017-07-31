@@ -4,6 +4,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import createStore from './store';
+import styles from './css/main.css';
 
 const store = createStore();
 
