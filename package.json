@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "flow-bin": "^0.51.1",
+    "node-sass-chokidar": "^0.0.3",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -17,10 +18,16 @@
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build": "npm run build-css && react-scripts build",
     "flow": "flow",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-css": "node-sass-chokidar src/sass -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/sass -o src/ --watch --recursive"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.0.2"
   }
 }
