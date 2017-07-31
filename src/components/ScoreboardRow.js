@@ -25,7 +25,7 @@ class ScoreboardRowComponent extends React.Component {
 
     return (
       <div className={rowClassName}>
-        <div className={rankClassName}>{this.props.participant.rank}</div>
+        <div className={rankClassName}>{this.props.participant.rank}.</div>
         <div className={nameClassName}>{this.props.participant.name}</div>
         <div className={scoreClassName}>{this.props.participant.score}</div>
       </div>

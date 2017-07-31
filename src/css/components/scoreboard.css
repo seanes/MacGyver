@@ -19,6 +19,30 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f5f6', endColorstr='#e5e7e8',GradientType=0 ); /* IE6-9 */
 }
 
+.scoreboardRow .rank,
+.scoreboardRow .score {
+  width: 15px;
+  height: 15px;
+  padding: 10px;
+  text-align: center;
+}
+
+.scoreboardRow .rank {
+  border-radius: 50%;
+}
+
+.scoreboardRow .score {
+  color: #f43820;
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+.scoreboardRow .name {
+  margin: 0 10px;
+  padding: 10px 0;
+  flex: 1;
+}
+
 .scoreboardRow.first {
   color: #fff;
 
@@ -30,20 +54,6 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f86352', endColorstr='#f43820',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
-.scoreboardRow .rank,
-.scoreboardRow .score {
-  width: 15px;
-  height: 15px;
-  padding: 10px;
-}
-
-.scoreboardRow .rank {
-  border-radius: 50%;
-  text-align: center;
-}
-
-.scoreboardRow .name {
-  margin: 0 10px;
-  padding: 10px 0;
-  flex: 1;
+.scoreboardRow.first .score {
+  color: #fff;
 }
