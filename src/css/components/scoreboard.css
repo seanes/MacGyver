@@ -1,2 +1,49 @@
 .scoreboard {
-  background: red; }
+  width: 100%;
+}
+
+.scoreboardRow {
+  width: 100%;
+  display: flex;
+  padding: 10px 20px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #222836;
+
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f3f5f6+0,e5e7e8+100 */
+  background: #f3f5f6; /* Old browsers */
+  background: -moz-linear-gradient(top,  #f3f5f6 0%, #e5e7e8 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  #f3f5f6 0%,#e5e7e8 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  #f3f5f6 0%,#e5e7e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f5f6', endColorstr='#e5e7e8',GradientType=0 ); /* IE6-9 */
+}
+
+.scoreboardRow.first {
+  color: #fff;
+
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f86352+0,f43820+100 */
+  background: #f86352; /* Old browsers */
+  background: -moz-linear-gradient(-45deg,  #f86352 0%, #f43820 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg,  #f86352 0%,#f43820 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg,  #f86352 0%,#f43820 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f86352', endColorstr='#f43820',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.scoreboardRow .rank,
+.scoreboardRow .score {
+  width: 15px;
+  height: 15px;
+  padding: 10px;
+}
+
+.scoreboardRow .rank {
+  border-radius: 50%;
+  text-align: center;
+}
+
+.scoreboardRow .name {
+  margin: 0 10px;
+  padding: 10px 0;
+  flex: 1;
+}
