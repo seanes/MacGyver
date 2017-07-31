@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { logout } from '../actions/sessionActions';
+import styles from '../sass/main.css';
 
 class Header extends React.Component {
 
@@ -29,7 +30,7 @@ class Header extends React.Component {
     ));
 
     return (
-      <div>
+      <div className={styles.scoreboard}>
         <h1>MacGyver</h1>
         {!authenticated
           ? <div><span>You are not logged in</span></div>
