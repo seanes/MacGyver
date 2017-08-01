@@ -20,12 +20,8 @@
 
 object {
   height: 25px;
-  padding-bottom: 10px;
+  padding: 0 0 10px;
   width: 100%;
   display: block;
   pointer-events: none;
-}
-
-.active {
-  background: cornflowerblue;
 }
