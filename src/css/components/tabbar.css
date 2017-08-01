@@ -15,6 +15,7 @@
   text-transform: uppercase;
   font-weight: lighter;
   font-size: .5em;
+  cursor: pointer;
 }
 
 object {
@@ -22,4 +23,5 @@ object {
   padding-bottom: 10px;
   width: 100%;
   display: block;
+  pointer-events: none;
 }
