@@ -8,7 +8,7 @@ import SVGAgent from '../icons/spy.svg';
 import SVGTrophy from '../icons/trophy.svg';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
-const LINK_HOME = 'home';
+const LINK_HOME = '';
 const LINK_PARTICIPANTS = 'participants';
 const LINK_ADD = 'add';
 const LINK_SCOREBOARD = 'score';

@@ -7,7 +7,6 @@ export default () => {
   return (
     <div>
       <Helmet title="Scoreboard"/>
-      <h1>Scoreboard</h1>
       <ScoreboardComponent participants={participants}/>
     </div>
   );
