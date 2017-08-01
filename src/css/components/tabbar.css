@@ -2,10 +2,13 @@
   background: #222836;
   color: #fff;
   display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 .tabBar div {
-  color: #575B67;
+  color: #FFC107;
   text-decoration: none;
   text-align: center;
   flex: 1;
