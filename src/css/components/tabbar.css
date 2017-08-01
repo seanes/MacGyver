@@ -25,3 +25,7 @@ object {
   display: block;
   pointer-events: none;
 }
+
+.active {
+  background: cornflowerblue;
+}
