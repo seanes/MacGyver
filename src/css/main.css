@@ -5,3 +5,22 @@
   font-family: 'PT Sans Caption', sans-serif;
   font-size: 16px;
 }
+
+input {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background: none;
+  border: none;
+  -webkit-appearance: none;
+  outline: none;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #fff;
+}
+
+label {
+  text-transform: uppercase;
+  margin-top: 10px;
+  display: block;
+  font-weight: bold;
+  font-size: .6em;
+}

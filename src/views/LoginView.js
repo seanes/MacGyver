@@ -6,7 +6,8 @@ import { withRouter } from 'react-router-dom';
 import Input from '../components/Input';
 import { bindActionCreators } from 'redux';
 import { login } from '../actions/sessionActions';
-
+import CSSLogin from '../css/page/login.css';
+import SVGChevron from '../icons/right-arrow.svg';
 
 class LoginView extends React.Component {
 
@@ -46,16 +47,15 @@ class LoginView extends React.Component {
     const { user: { email, password } } = this.state;
 
     const SubmitButton = withRouter(({ history }) => (
-      <button
+      <div
         onClick={() => this.handleSubmit(history)}
-        type="submit">Submit
-      </button>
+        type="submit"
+        className={CSSLogin.submit}><img src={SVGChevron} />
+      </div>
     ));
 
     return (
-      <div>
-        <Helmet title="Login"/>
-        <h1>Login</h1>
+      <div className={CSSLogin.login}>
         <Input
           name="username"
           value={email}

@@ -16,7 +16,6 @@ const App = ({ authenticated, user, checked }) =>
     <Router>
       {checked &&
         <div>
-          <Header user={user} authenticated={authenticated}/>
           <PrivateRoute
             authenticated={authenticated}
             exact
@@ -39,7 +38,8 @@ const App = ({ authenticated, user, checked }) =>
             component={ScoreBoardView}
           />
           <Route path="/login" component={LoginView} />
-          <TabBar/>
+          {authenticated &&
+          <TabBar/>}
         </div>}
     </Router>
   </div>;
