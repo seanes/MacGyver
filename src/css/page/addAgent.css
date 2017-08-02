@@ -1,3 +1,19 @@
-.addAgent {
-  margin: 50px 20px 0;
+.addAgent label {
+  color: #fff;
+}
+
+.agentInput {
+  padding: 20px 20px 10px;
+
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f43820+0,f24330+100 */
+  background: #f43820; /* Old browsers */
+  background: -moz-linear-gradient(-45deg,  #f43820 0%, #f24330 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg,  #f43820 0%,#f24330 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg,  #f43820 0%,#f24330 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f43820', endColorstr='#f24330',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.agentInput input {
+  color: #fff;
+  border-bottom: 2px solid #fff;
 }

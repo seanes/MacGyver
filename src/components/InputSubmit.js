@@ -19,7 +19,7 @@ class InputSubmitComponent extends React.Component {
           <input type="text" value={this.state.addedAgentName} onChange={(e) => this.setState({addedAgentName: e.target.value})}/>
           <button
             onClick={() => this.props.cb(this.state.addedAgentName)}
-            className={CSSButton.submit}><ChevronIcon />
+            className={CSSButton.submit}><ChevronIcon color="#f43820"/>
           </button>
         </div>
       </div>

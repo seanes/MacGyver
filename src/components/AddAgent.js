@@ -14,7 +14,9 @@ class AddAgentComponent extends React.Component {
   render() {
     return (
       <div className={styles.addAgent}>
-        <InputSubmit label="Legg til agent" cb={(agentName) => this.handleSubmit(agentName)}/>
+        <div className={styles.agentInput}>
+          <InputSubmit label="Legg til agent" cb={(agentName) => this.handleSubmit(agentName)}/>
+        </div>
       </div>
     );
   }
