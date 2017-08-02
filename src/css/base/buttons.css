@@ -17,6 +17,7 @@ button.submit {
   border: none;
   cursor: pointer;
   text-align: center;
+  line-height: 0px;
 }
 
 button.submit .icon {
