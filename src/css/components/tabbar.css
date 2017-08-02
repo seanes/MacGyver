@@ -18,7 +18,7 @@
   cursor: pointer;
 }
 
-object {
+.icon {
   height: 25px;
   padding: 0 0 10px;
   width: 100%;
@@ -26,6 +26,6 @@ object {
   pointer-events: none;
 }
 
-path {
-  fill: red;
+.active {
+  color: red;
 }
