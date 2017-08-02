@@ -9,7 +9,6 @@ class PartcipantsView extends React.Component {
     return (
       <div>
         <Helmet title="All partcipants"/>
-        <h1>All participants</h1>
         <ParticipantList participants={this.props.participants}/>
       </div>
     );

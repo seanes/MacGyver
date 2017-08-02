@@ -4,6 +4,7 @@ import styles from '../css/components/tag.css'
 
 class TagComponent extends React.Component {
   handleClick() {
+    console.log(this.props.text);
     this.props.history.push(`/participants`);
   }
 

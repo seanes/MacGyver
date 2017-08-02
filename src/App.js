@@ -10,34 +10,37 @@ import PrivateRoute from './views/PrivateRoute';
 import Header from './components/Header';
 import TabBar from './components/TabBar';
 import { connect } from 'react-redux';
+import styles from './css/main.css';
 
 const App = ({ authenticated, user, checked }) =>
   <div>
     <Router>
       {checked &&
         <div>
-          <PrivateRoute
-            authenticated={authenticated}
-            exact
-            path="/"
-            component={HomeView}
-          />
-          <PrivateRoute
-            authenticated={authenticated}
-            path="/add"
-            component={AddView}
-          />
-          <PrivateRoute
-            authenticated={authenticated}
-            path="/participants"
-            component={PartcipantsView}
-          />
-          <PrivateRoute
-            authenticated={authenticated}
-            path="/score"
-            component={ScoreBoardView}
-          />
-          <Route path="/login" component={LoginView} />
+          <div className={styles.page}>
+            <PrivateRoute
+              authenticated={authenticated}
+              exact
+              path="/"
+              component={HomeView}
+            />
+            <PrivateRoute
+              authenticated={authenticated}
+              path="/add"
+              component={AddView}
+            />
+            <PrivateRoute
+              authenticated={authenticated}
+              path="/participants"
+              component={PartcipantsView}
+            />
+            <PrivateRoute
+              authenticated={authenticated}
+              path="/score"
+              component={ScoreBoardView}
+            />
+            <Route path="/login" component={LoginView} />
+          </div>
           {authenticated &&
           <TabBar/>}
         </div>}

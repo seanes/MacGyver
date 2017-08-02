@@ -1,5 +1,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import Tag from './Tag';
+import CSSParticipant from '../css/components/participant.css'
+import Image from '../kjekk_kar.jpg'
 
 class Participant extends React.Component {
 
@@ -19,13 +22,15 @@ class Participant extends React.Component {
 
     return (
       <div>
-        <span>{firstName}</span>
-        <span>{lastName}</span>
-        <span>{description}</span>
-        <img src={image}/>
-        <span>{ // create and add Tag component
-          tags.join(',')
-        }</span>
+        <div className={CSSParticipant.participant}>
+          <img src={Image} className={CSSParticipant.image}/>
+
+          <div className={CSSParticipant.nameBlock}>
+            <span className={CSSParticipant.name}>{firstName} {lastName}</span>
+            <span className={CSSParticipant.description}>{description}</span>
+            {tags.map((key) => <Tag text={key} />)}
+          </div>
+        </div>
       </div>
     )
   }
