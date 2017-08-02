@@ -16,6 +16,7 @@ input {
   width: 100%?;
   border: none;
   -webkit-appearance: none;
+  border-radius: 0;
   outline: none;
   padding-bottom: 10px;
   border-bottom: 2px solid rgba(0, 0, 0, 0.3);

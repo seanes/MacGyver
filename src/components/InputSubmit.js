@@ -11,6 +11,11 @@ class InputSubmitComponent extends React.Component {
     this.state = {addedAgentName: ""}
   }
 
+  handleClick () {
+    this.props.cb(this.state.addedAgentName)
+    this.setState({addedAgentName: ""})
+  }
+
   render() {
     return (
       <div>
@@ -18,7 +23,7 @@ class InputSubmitComponent extends React.Component {
         <div className={CSSInput.inputSubmit}>
           <input type="text" value={this.state.addedAgentName} onChange={(e) => this.setState({addedAgentName: e.target.value})}/>
           <button
-            onClick={() => this.props.cb(this.state.addedAgentName)}
+            onClick={() => this.handleClick()}
             className={CSSButton.submit}><ChevronIcon color="#f43820"/>
           </button>
         </div>
