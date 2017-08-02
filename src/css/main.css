@@ -7,17 +7,20 @@
 }
 
 input {
+  color: #000;
   margin-top: 10px;
   margin-bottom: 20px;
   background: none;
+  width: 100%;
   border: none;
   -webkit-appearance: none;
   outline: none;
   padding-bottom: 10px;
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
 }
 
 label {
+  color: #000;
   text-transform: uppercase;
   margin-top: 10px;
   display: block;

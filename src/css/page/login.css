@@ -14,9 +14,10 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f43820', endColorstr='#f24330',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
-input {
+.login input {
   color: #fff;
   width: 100%;
+  border-bottom: 2px solid #fff;
 }
 
 input:-webkit-autofill,
@@ -26,7 +27,7 @@ input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s, color 5000s ease-in-out 0s;
 }
 
-label {
+.login label {
   color: #fff;
 }
 

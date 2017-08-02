@@ -32,7 +32,18 @@ class LoginView extends React.Component {
   handleSubmit(history) {
     const { user } = this.state;
     const { login } = this.props;
-    login(user, history);
+    login(user, history).catch(data => this.handleLoginError(data));
+  }
+
+  handleLoginError(data) {
+    if (data.response == null) {
+      alert('Noe gikk galt, kanskje server er nede? :)')
+      return
+    }
+
+    if (data.response.status == 401) {
+      alert('Brukernavn eller passord er feil')
+    }
   }
 
   handleChange(e) {

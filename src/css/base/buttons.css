@@ -7,6 +7,23 @@ button.success {
   padding: 10px 0;
 }
 
+button.submit {
+  background: #f43820;
+  border-radius: 50%;
+  float: right;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+button.submit .icon {
+  height: 100%;
+  width: 10px;
+}
+
 button.full {
   width: 100%;
 }
