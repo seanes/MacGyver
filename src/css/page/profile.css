@@ -1,0 +1,27 @@
+.profile {
+  margin: 20px;
+}
+
+.profile .imageWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.profile .imageWrapper .image {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  background-color: #f43820;
+  padding: 4px;
+}
+
+.profile .imageWrapper .image img {
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+}
+
+.profile .logout {
+  margin-top: 30px;
+}
