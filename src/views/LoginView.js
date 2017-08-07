@@ -37,11 +37,11 @@ class LoginView extends React.Component {
 
   handleLoginError(data) {
     if (data.response == null) {
-      alert('Noe gikk galt, kanskje server er nede? :)')
+      alert('Ukjent feil har oppstått');
       return
     }
 
-    if (data.response.status == 401) {
+    if (data.response.status == 401 ||data.response.status == 403) {
       alert('Brukernavn eller passord er feil')
     }
   }

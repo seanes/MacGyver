@@ -5,7 +5,8 @@ const config = {
   headers: {
     'Content-type': 'application/x-www-form-urlencoded',
     'accept': 'application/json',
-  }
+  },
+  withCredentials: true
 };
 
 export const login = ({username, password}) => {
