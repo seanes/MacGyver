@@ -54,6 +54,7 @@ passport.deserializeUser((id, done) => {
   });
 });
 
+
 app.use(cors({ origin: 'http://localhost:3000', methods:['GET','POST', 'OPTIONS'], credentials: true }));
 
 app.post('/login',

@@ -1,2 +1,3 @@
 export const GET_PARTICIPANTS = 'GET_PARTICIPANTS';
 export const GET_PROFILE = 'GET_PROFILE';
+export const GET_HIGHSCORE = 'GET_HIGHSCORE';

@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 import ScoreboardRowComponent from './ScoreboardRow';
-import styles from '../css/components/scoreboard.css'
+import styles from '../css/components/scoreboard.css';
 import classNames from 'classnames/bind';
 
 let cx = classNames.bind(styles);
@@ -8,11 +8,17 @@ let cx = classNames.bind(styles);
 class ScoreboardComponent extends React.Component {
   render() {
     let className = cx({
-          scoreboard: true
+      scoreboard: true
     });
 
+    const { highscore } = this.props;
+
     return (
-      <div className={className}>{this.props.participants.map((participant, i) => <ScoreboardRowComponent key={i} participant={participant} />) }</div>
+      <div className={className}>
+        {highscore.map((participant, i) =>
+          <ScoreboardRowComponent key={i} participant={participant} />
+        )}
+      </div>
     );
   }
 }
