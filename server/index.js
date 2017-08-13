@@ -23,7 +23,6 @@ app.use(passport.session());
 app.use(errorHandler);
 
 
-
 const ensureLogin = (req, res, next) => {
   if (req.isAuthenticated()) { return next(); }
   res.sendStatus(403);
@@ -80,6 +79,14 @@ app.get('/profile',
     const profile = db.users.findProfile(req.user.id);
     res.json({profile: profile});
   });
+
+app.get('/participants',
+  ensureLogin,
+  (req, res) => {
+    const participants = db.users.findParticipants();
+    res.json(participants);
+  });
+
 
 
 app.get('/highscore',

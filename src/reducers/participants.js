@@ -1,18 +1,16 @@
 import * as types from '../constants/ActionTypes';
-import { participants } from '../mockdata/participantsMock';
 
 const initialState = {
-  data: participants
+  data: []
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
 
     case types.GET_PARTICIPANTS:
-      return {
-        data: action.payload,
-        ...state
-      };
+      return Object.assign({}, state, {
+        data: action.payLoad
+      });
 
     default:
       return state;

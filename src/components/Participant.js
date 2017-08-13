@@ -1,8 +1,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import Tag from './Tag';
-import CSSParticipant from '../css/components/participant.css'
-import Image from '../kjekk_kar.jpg'
+import CSSParticipant from '../css/components/participant.css';
+import NoImage from '../images/no_image.png';
 
 class Participant extends React.Component {
 
@@ -11,25 +11,26 @@ class Participant extends React.Component {
       firstName: propTypes.string.isRequired,
       lastName: propTypes.string.isRequired,
       description: propTypes.string.isRequired,
-      image: propTypes.string,
+      img: propTypes.string,
       tags: propTypes.arrayOf(propTypes.string).isRequired
     }),
   };
 
   render() {
 
-    const { firstName, lastName, description, image, tags } = this.props.data;
+    const { firstName, lastName, description, img, tags } = this.props.data;
 
     return (
       <div>
         <div className={CSSParticipant.participant}>
-          <img src={Image} className={CSSParticipant.image}/>
-
+          <img src={img || NoImage} className={CSSParticipant.image}/>
           <div className={CSSParticipant.nameBlock}>
             <span className={CSSParticipant.name}>{firstName} {lastName}</span>
             <span className={CSSParticipant.description}>{description}</span>
-            {tags.map((key) => <Tag text={key} />)}
           </div>
+        </div>
+        <div className={CSSParticipant.taglist}>
+          {tags.map((key) => <Tag key={key} text={key} />)}
         </div>
       </div>
     )
