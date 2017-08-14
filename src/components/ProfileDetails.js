@@ -1,7 +1,7 @@
 import React from 'react';
 import Tag from '../components/Tag'
-import image from '../kjekk_kar.jpg';
 import styles from '../css/page/profile.css'
+import NoImage from '../images/no_image.png';
 
 
 class ProfileDetails extends React.Component {
@@ -16,14 +16,13 @@ class ProfileDetails extends React.Component {
       <div className={styles.profile}>
         <div className={styles.imageWrapper}>
           <div className={styles.image} >
-            <img src={image} />
+            <img src={profile.img || NoImage} />
           </div>
         </div>
 
         <span className={styles.name}>
           {`${profile.firstName} ${profile.lastName}`}
         </span>
-
         <div className={styles.description}>
           {profile.description}
         </div>

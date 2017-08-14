@@ -18,6 +18,12 @@
   border-bottom: 2px solid #fff;
 }
 
+div.addAgentMsg {
+  color: #fff;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
 .caughtAgents {
   margin: 20px 20px 0;
 }

@@ -1,6 +1,7 @@
 var express = require('express');
 var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
+var bodyParser = require("body-parser");
 var db = require('./db');
 const port = process.env.port || 8989;
 const expressSession = require('express-session');
@@ -15,6 +16,7 @@ const errorHandler = (req, res, next) => {
 }
 
 app.use(require('morgan')('combined'));
+app.use(bodyParser.json());
 app.use(require('body-parser').urlencoded({ extended: true }));
 app.use(expressSession({ secret: 'SFVI', resave: false, saveUninitialized: false, cookie : { secure : false }}));
 app.use(flash());
@@ -87,10 +89,29 @@ app.get('/participants',
     res.json(participants);
   });
 
+app.post('/agents/',
+  ensureLogin,
+  (req, res) => {
 
+    const agents = db.users.addCaughtAgent(req.user.id, req.body.agentName);
+
+    if (agents) {
+      res.json(agents);
+    } else {
+      res.sendStatus(404);
+    }
+
+  });
+
+app.get('/agents',
+  ensureLogin,
+  (req, res) => {
+    const caughtAgents = db.users.findCaughtAgents(req.user.id);
+    res.json(caughtAgents);
+  });
 
 app.get('/highscore',
-  require('connect-ensure-login').ensureLoggedIn(),
+  ensureLogin,
   (req, res) => {
     res.json(db.users.getHighScore());
   });

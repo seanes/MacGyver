@@ -25,6 +25,11 @@ button.submit .icon {
   width: 10px;
 }
 
+button.submit:disabled {
+  opacity: 0.5;
+}
+
 button.full {
   width: 100%;
 }
+
