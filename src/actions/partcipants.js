@@ -1,5 +1,5 @@
 import * as types from '../constants/ActionTypes';
-import { dispatchable } from './';
+import { dispatchable, handle403 } from './';
 import axios from 'axios';
 const serverUrl = 'http://localhost:8989';
 
@@ -12,7 +12,7 @@ export const getParticipants = participants => dispatch => {
       ));
     }
   }).catch( err => {
-    console.log(err);
+    handle403(err);
   });
 }
 
@@ -24,7 +24,7 @@ export const getHighscore = () => dispatch => {
       ));
     }
   }).catch( err => {
-    console.log(err);
+    handle403(err);
   });
 };
 
@@ -36,7 +36,7 @@ export const getAgentsCaught = () => dispatch => {
       ));
     }
   }).catch( err => {
-    console.log(err);
+    handle403(err);
   });
 };
 
@@ -64,6 +64,8 @@ export const addAgent = agentName => (dispatch, getState) => {
             types.INVALID_AGENT_CODE, "Ugyldig agentnavn!"
           ));
         }
+
+        handle403(err);
       }
     });
   } else {

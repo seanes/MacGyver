@@ -7,7 +7,6 @@ import ScoreBoardView from './views/ScoreBoardView';
 import LoginView from './views/LoginView';
 import PartcipantsView from './views/PartcipantsView';
 import PrivateRoute from './views/PrivateRoute';
-import Header from './components/Header';
 import TabBar from './components/TabBar';
 import { connect } from 'react-redux';
 import styles from './css/main.css';

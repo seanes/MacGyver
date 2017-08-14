@@ -1,6 +1,7 @@
 import * as types from '../constants/ActionTypes';
 import axios from 'axios';
-import { dispatchable } from './';
+import { dispatchable, handle403 } from './';
+
 const serverUrl = 'http://localhost:8989';
 
 export const getProfile = () => dispatch => {
@@ -11,10 +12,6 @@ export const getProfile = () => dispatch => {
       ));
     }
   }).catch( err => {
-    if (err.response) {
-      if (err.response.status == 403) {
-
-      }
-    }
+    handle403(err);
   });
 }
