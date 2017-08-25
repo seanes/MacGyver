@@ -16,7 +16,7 @@ class ProfileDetails extends React.Component {
       <div className={styles.profile}>
         <div className={styles.imageWrapper}>
           <div className={styles.image} >
-            <img src={profile.img || NoImage} />
+            <img src={profile.image || NoImage} />
           </div>
         </div>
 

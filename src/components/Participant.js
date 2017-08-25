@@ -18,12 +18,12 @@ class Participant extends React.Component {
 
   render() {
 
-    const { firstName, lastName, description, img, tags } = this.props.data;
+    const { firstName, lastName, description, image, tags } = this.props.data;
 
     return (
       <div>
         <div className={CSSParticipant.participant}>
-          <img src={img || NoImage} className={CSSParticipant.image}/>
+          <img src={image || NoImage} className={CSSParticipant.image}/>
           <div className={CSSParticipant.nameBlock}>
             <span className={CSSParticipant.name}>{firstName} {lastName}</span>
             <span className={CSSParticipant.description}>{description}</span>

@@ -1,7 +1,4 @@
-const records = [
-  { id: 1, username: 'sean', password: 'scully' },
-  { id: 2, username: 'terje', password: 'lonoy'}
-];
+var ObjectID = require('mongodb').ObjectID;
 
 const agentRecords = [
   { id: 1, userId: 1, agentName: 'ikke grim', fullName: "Sean Scully", caught: []},
@@ -26,14 +23,14 @@ const profiles = [
   },
 ];
 
-exports.findById = (id, cb) => {
+exports.findById = (db, id, cb) => {
   process.nextTick(() => {
-    let idx = id - 1;
-    if (records[idx]) {
-      cb(null, records[idx]);
-    } else {
-      cb(new Error('User ' + id + ' does not exist'));
-    }
+    db.collection('users').findOne({participantId: new ObjectID(id)}, (err, record) => {
+      if (err || record === null) {
+        cb(err, null);
+      }
+      cb(null, record);
+    });
   });
 };
 
@@ -78,27 +75,34 @@ exports.findCaughtAgents = userId => {
   return null;
 };
 
-exports.findProfile = userId => {
-    for (let i = 0; i < profiles.length; i++) {
-      let profile = profiles[i];
-      if (profile.userId == userId) {
-        return profile;
+exports.findProfile = (db, userId, cb) => {
+  process.nextTick(() => {
+    db.collection('participants').findOne({_id: new ObjectID(userId)}, (err, record) => {
+      if (err || record === null) {
+        cb(err, null);
       }
-    }
-    return null;
+      cb(null, record);
+    });
+  });
 };
 
-exports.findParticipants = () => {
-  return profiles.map(({firstName, lastName, description, tags, img}) => ({
-    firstName,
-    lastName,
-    description,
-    img,
-    tags
-  }));
-}
 
-exports.getHighScore = () => {
+exports.getHighScore = (db, cb) => {
+  process.nextTick(() => {
+    db.collection('participants').find().sort({score: -1}).limit(10).toArray(function(err, results) {
+      if (err) {
+        cb(err, null);
+      } else {
+        const highscoreList = results.map( (record, index) => ({
+          name: record.firstName + ' ' + record.lastName,
+          score: record.score || 0,
+          rank: index+1
+        }));
+        cb(null, highscoreList);
+      }
+    });
+  });
+
   const sortedProfiles = profiles.sort( (a, b) => b.score - a.score);
   let highscoreList = [];
   for (let i = 0; i < Math.min(sortedProfiles.length, 10); i ++) {
@@ -112,14 +116,13 @@ exports.getHighScore = () => {
   return highscoreList;
 };
 
-exports.findByUsername = (username, cb) => {
+exports.findByUsername = (db, username, cb) => {
   process.nextTick(() => {
-    for (let i = 0, len = records.length; i < len; i++) {
-      let record = records[i];
-      if (record.username === username) {
-        return cb(null, record);
+    db.collection('users').findOne({username: username}, (err, record) => {
+      if (err || record === null) {
+        cb(err, null);
       }
-    }
-    return cb(null, null);
+      cb(null, record);
+    });
   });
 };
