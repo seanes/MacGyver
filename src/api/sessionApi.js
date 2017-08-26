@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { serverUrl } from './';
+import { serverUrl } from './../actions/';
 
 const config = {
   headers: {
