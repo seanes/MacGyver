@@ -1,6 +1,6 @@
 import axios from 'axios';
+import { serverUrl } from './';
 
-const serverUrl = 'http://localhost:8989';
 const config = {
   headers: {
     'Content-type': 'application/x-www-form-urlencoded',
