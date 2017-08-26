@@ -31,7 +31,7 @@ export default (state = initialState, action) => {
         }
       });
 
-    case types.INVALID_AGENT_CODE:
+    case types.AGENT_CODE_MESSAGE:
       return Object.assign({}, state, {
         agents: {
           ...state.agents,

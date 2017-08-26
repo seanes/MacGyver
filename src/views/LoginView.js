@@ -1,5 +1,4 @@
 import React from 'react';
-import Helmet from 'react-helmet';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -67,6 +66,8 @@ class LoginView extends React.Component {
 
     return (
       <div className={CSSLogin.login}>
+        <div className={CSSLogin.title}>Bekhoff</div>
+        <div className={CSSLogin.slogan}>Tar mingling til et nytt nivå ...</div>
         <Input
           name="username"
           value={email}

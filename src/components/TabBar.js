@@ -13,11 +13,21 @@ const LINK_PARTICIPANTS = 'participants';
 const LINK_ADD = 'add';
 const LINK_SCOREBOARD = 'score';
 
+
 class TabBarComponent extends React.Component {
   constructor(props) {
+    const route = window.location.pathname.substring(1);
+
+    const routeMap = {
+      '': LINK_HOME,
+      'participants': LINK_PARTICIPANTS,
+      'add': LINK_ADD,
+      'score': LINK_SCOREBOARD
+    };
+
     super(props);
     this.state = {
-      activeTab: LINK_HOME
+      activeTab: routeMap[route] || LINK_HOME
     };
   }
 

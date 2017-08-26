@@ -4,7 +4,7 @@
   right: 0;
   top: 0;
   bottom: 0;
-  padding: 50px 20px 0;
+  padding: 30px 20px 0;
 
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f43820+0,f24330+100 */
   background: #f43820; /* Old browsers */
@@ -47,4 +47,16 @@ input:-webkit-autofill:active {
   vertical-align: center;
   height: 100%;
   width: 10px;
+}
+
+.title {
+  font-size: 2rem;
+  color: #fff;
+}
+
+.slogan {
+  font-size: .8em;
+  color: #fff;
+  margin-top: 5px;
+  margin-bottom: 30px;
 }

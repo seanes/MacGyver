@@ -3,11 +3,15 @@ var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
 var bodyParser = require("body-parser");
 var dbOperations = require('./db');
+var apicache = require('apicache');
+
+
 const port = process.env.port || 8989;
 const expressSession = require('express-session');
 const flash = require('connect-flash');
 const cors = require('cors');
 const MongoClient = require('mongodb').MongoClient;
+const cache = apicache.middleware;
 
 
 MongoClient.connect('mongodb://sean:scully@ds017776.mlab.com:17776/macgyver-test', (err, mongoDb) => {
@@ -93,7 +97,7 @@ MongoClient.connect('mongodb://sean:scully@ds017776.mlab.com:17776/macgyver-test
     });
 
   app.get('/participants',
-    ensureLogin,
+    [ensureLogin, cache('12 hours')],
     (req, res) => {
       process.nextTick(() => {
         mongoDb.collection('participants').find({}, {agentName: 0}).sort().toArray(function(err, results) {

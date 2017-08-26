@@ -30,10 +30,30 @@ div.addAgentMsg {
   justify-content: space-between;
 }
 
+.agentName {
+  color: #fff;
+  display: flex;
+  text-transform: uppercase;
+}
+
+.agentName > div {
+  font-size: 0.8em;
+}
+
 .agentCount {
-  color: #f43820;
-  font-weight: 600;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  min-width: 1em;
   font-size: 1rem;
+  padding: 8px;
+  height: 1rem;
+  width: 1rem;
+  line-height: 0;
+  vertical-align: middle;
+  background: #f43820;
 }
 
 .caughtAgents {

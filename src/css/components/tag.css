@@ -1,6 +1,17 @@
 .tag {
   color: #fff;
-  background-color: #5467C3;
+  background-color: #c6c6c6;
+  border-radius: 5px;
+  padding: 5px;
+  display: inline-block;
+  font-size: .7em;
+  margin: 0 5px 5px 0;
+  text-transform: uppercase;
+}
+
+.active {
+  color: #fff;
+  background-color: #0e4e8c;
   border-radius: 5px;
   padding: 5px;
   display: inline-block;

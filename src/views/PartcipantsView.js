@@ -7,7 +7,9 @@ import { getParticipants } from '../actions/partcipants';
 class PartcipantsView extends React.Component {
 
   componentDidMount() {
-    this.props.dispatch(getParticipants());
+    if (!this.props.participants.length) {
+      this.props.dispatch(getParticipants());
+    }
   }
 
   render() {

@@ -24,7 +24,7 @@ class CaughtAgentsComponents extends React.Component {
                   </div>
                 ))}
             </div>
-          : <h1>Du har ingen agenter. På tide å mingle!</h1>}
+          : <h1>Du har ingen agenter. På tide å mingle?</h1>}
       </div>
     );
   }

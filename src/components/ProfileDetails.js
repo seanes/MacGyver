@@ -2,6 +2,7 @@ import React from 'react';
 import Tag from '../components/Tag'
 import styles from '../css/page/profile.css'
 import NoImage from '../images/no_image.png';
+import AgentIcon from './icons/AgentIcon';
 
 
 class ProfileDetails extends React.Component {
@@ -19,10 +20,17 @@ class ProfileDetails extends React.Component {
             <img src={profile.image || NoImage} />
           </div>
         </div>
-
         <span className={styles.name}>
           {`${profile.firstName} ${profile.lastName}`}
         </span>
+        <div className={styles.agentName}>
+          <div style={{marginRight: 5}}>
+            <AgentIcon/>
+          </div>
+          <span>
+          {profile.agentName}
+          </span>
+        </div>
         <div className={styles.description}>
           {profile.description}
         </div>

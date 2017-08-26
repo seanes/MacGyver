@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import Tag from './Tag';
 import CSSParticipant from '../css/components/participant.css';
 import NoImage from '../images/no_image.png';
+import { connect } from 'react-redux';
 
 class Participant extends React.Component {
 
@@ -18,7 +19,15 @@ class Participant extends React.Component {
 
   render() {
 
-    const { firstName, lastName, description, image, tags } = this.props.data;
+    const { activeTags, data } = this.props;
+    const { firstName, lastName, description, image, tags } = data;
+
+    let allTagsAreFound = true;
+    activeTags.forEach( tag => {
+      if (tags.indexOf(tag) === -1) allTagsAreFound = false;
+    });
+
+    if (!allTagsAreFound) return null;
 
     return (
       <div>
@@ -37,4 +46,8 @@ class Participant extends React.Component {
   }
 }
 
-export default Participant;
+const mapStateToProps = state => ({
+  activeTags: state.tags.active
+});
+
+export default connect(mapStateToProps)(Participant);

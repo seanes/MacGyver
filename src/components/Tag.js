@@ -1,18 +1,29 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom';
-import styles from '../css/components/tag.css'
+import { connect } from 'react-redux';
+import styles from '../css/components/tag.css';
+import { clickTag } from '../actions/tags';
 
 class TagComponent extends React.Component {
   handleClick() {
-    console.log(this.props.text);
+    this.props.dispatch(clickTag(this.props.text));
     this.props.history.push(`/participants`);
   }
 
   render () {
+
+    const { text, activeTags } = this.props;
+
+    const isActive =  activeTags.indexOf(text) > -1;
+
     return (
-      <div className={styles.tag} onClick={() => this.handleClick()}>{this.props.text}</div>
+      <div className={isActive ? styles.active : styles.tag} onClick={() => this.handleClick()}>{this.props.text}</div>
     )
   }
 }
 
-export default withRouter(TagComponent);
+const mapStateToProps = state => ({
+  activeTags: state.tags.active
+});
+
+export default withRouter(connect(mapStateToProps)(TagComponent));

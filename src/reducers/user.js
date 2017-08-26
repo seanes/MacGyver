@@ -1,8 +1,8 @@
 import * as types from '../constants/ActionTypes';
 
-const initialState = [{
+const initialState = {
   profile: null
-}];
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {

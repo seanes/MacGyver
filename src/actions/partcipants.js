@@ -36,8 +36,11 @@ export const getHighscore = () => dispatch => {
 export const getAgentsCaught = () => dispatch => {
   axios.get(serverUrl + '/agents', { withCredentials: true }).then( response => {
     if (response.data) {
+
+      const agents = response.data.sort((a,b) => new Date(b.added) - new Date(a.added));
+
       dispatch(dispatchable(
-        types.GET_CAUGHT_AGENTS, response.data
+        types.GET_CAUGHT_AGENTS, agents
       ));
     }
   }).catch( err => {
@@ -58,15 +61,19 @@ export const addAgent = agentName => (dispatch, getState) => {
   if (!alreadyAdded) {
     axios.post(serverUrl + '/agents', { agentName }, { withCredentials: true }).then( response => {
       if (response.data) {
+        const agents = response.data.sort((a,b) => new Date(b.added) - new Date(a.added));
         dispatch(dispatchable(
-          types.GET_CAUGHT_AGENTS, response.data
+          types.GET_CAUGHT_AGENTS, agents
+        ));
+        dispatch(dispatchable(
+          types.AGENT_CODE_MESSAGE, "Agent lagt til!"
         ));
       }
     }).catch( err => {
       if (err.response) {
         if (err.response.status == 404) {
           dispatch(dispatchable(
-            types.INVALID_AGENT_CODE, "Ugyldig agentnavn!"
+            types.AGENT_CODE_MESSAGE, "Ugyldig agentnavn!"
           ));
         }
 
@@ -75,7 +82,7 @@ export const addAgent = agentName => (dispatch, getState) => {
     });
   } else {
     dispatch(dispatchable(
-      types.INVALID_AGENT_CODE, "Denne agenten finnes fra før!"
+      types.AGENT_CODE_MESSAGE, "Denne agenten finnes fra før!"
     ));
   }
 

@@ -32,6 +32,19 @@
   font-size: 1.3em;
 }
 
+.profile .agentName {
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  text-transform: uppercase;
+  margin-top: 20px;
+  display: block;
+  font-size: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .profile .description {
   text-align: center;
   margin-top: 20px;

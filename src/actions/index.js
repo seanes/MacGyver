@@ -2,6 +2,7 @@ import { sessionService } from 'redux-react-session';
 
 export * from './user';
 export * from './partcipants';
+export * from './tags';
 
 
 export const dispatchable = (type, payLoad) => ({

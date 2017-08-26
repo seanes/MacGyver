@@ -46,7 +46,7 @@ const App = ({ authenticated, user, checked }) =>
     </Router>
   </div>;
 
-const mapStateToProps = ({ session }) => ({
+const mapStateToProps = ({ session, route }) => ({
   checked: session.checked,
   authenticated: session.authenticated,
   user: session.user,

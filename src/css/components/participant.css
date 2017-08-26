@@ -31,8 +31,7 @@
   display: block;
   margin-top: 10px;
   margin-bottom: 5px;
-  background: #F43820;
-  color: #fff;
+  color: #000;
   border-radius: 5px;
   padding: 5px;
 }
@@ -40,5 +39,5 @@
 .taglist {
   width: 90%;
   margin: auto;
-  text-align: center;
+  text-align: left;
 }
