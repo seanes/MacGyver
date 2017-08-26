@@ -41,6 +41,13 @@ exports.addAgent = (db, userId, agentName, cb) => {
 
         const agentNameRe = new RegExp(['^', agentName, '$'].join(''), 'i');
 
+        // check if user is trying to add himself
+
+        if (agentNameRe.test(record.agentName.trim())) {
+          cb(true, null);
+          return;
+        }
+
         db
           .collection('agents')
           .findOne({ agentName: agentNameRe }, (err, agent) => {
