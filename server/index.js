@@ -2,7 +2,7 @@ var express = require('express');
 var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
 var bodyParser = require("body-parser");
-var db = require('./db');
+var dbOperations = require('./db');
 const port = process.env.port || 8989;
 const expressSession = require('express-session');
 const flash = require('connect-flash');
@@ -38,7 +38,7 @@ MongoClient.connect('mongodb://sean:scully@ds017776.mlab.com:17776/macgyver-test
     },
     (req, username, password, next) => {
 
-      db.users.findByUsername(mongoDb, username, (err, user) => {
+      dbOperations.users.findByUsername(mongoDb, username, (err, user) => {
 
         if (err) { return next(err); }
         if (!user) { return next(null, false); }
@@ -53,7 +53,7 @@ MongoClient.connect('mongodb://sean:scully@ds017776.mlab.com:17776/macgyver-test
   });
 
   passport.deserializeUser((id, done) => {
-    db.users.findById(mongoDb, id, (err, user) => {
+    dbOperations.users.findById(mongoDb, id, (err, user) => {
       if (err) { return done(err); }
       done(null, user);
     });
@@ -66,7 +66,7 @@ MongoClient.connect('mongodb://sean:scully@ds017776.mlab.com:17776/macgyver-test
     passport.authenticate('local', { failWithError: true }),
     (req, res, next) => {
       process.nextTick( () => {
-        db.users.findProfile(mongoDb, req.user.participantId, (err, profile) => {
+        dbOperations.users.findProfile(mongoDb, req.user.participantId, (err, profile) => {
           if (err) {
             res.sendStatus(401)
           } else {
@@ -87,7 +87,7 @@ MongoClient.connect('mongodb://sean:scully@ds017776.mlab.com:17776/macgyver-test
   app.get('/profile',
     ensureLogin,
     (req, res) => {
-      db.users.findProfile(mongoDb, req.user.participantId, (err, profile) => {
+      dbOperations.users.findProfile(mongoDb, req.user.participantId, (err, profile) => {
         res.json({profile});
       });
     });
@@ -105,28 +105,27 @@ MongoClient.connect('mongodb://sean:scully@ds017776.mlab.com:17776/macgyver-test
   app.post('/agents/',
     ensureLogin,
     (req, res) => {
-
-      const agents = db.users.addCaughtAgent(req.user.id, req.body.agentName);
-
-      if (agents) {
-        res.json(agents);
-      } else {
-        res.sendStatus(404);
-      }
-
+      dbOperations.users.addAgent(mongoDb, req.user.participantId, req.body.agentName, (error, result) => {
+        if (error) {
+          res.sendStatus(404);
+        } else {
+          res.json(result);
+        }
+      });
     });
 
   app.get('/agents',
     ensureLogin,
     (req, res) => {
-      const caughtAgents = db.users.findCaughtAgents(req.user.id);
-      res.json(caughtAgents);
+      dbOperations.users.findCaughtAgents(mongoDb, req.user.participantId, (err, result) => {
+        res.json(result);
+      });
     });
 
   app.get('/highscore',
     ensureLogin,
     (req, res) => {
-      db.users.getHighScore(mongoDb, (err, result) => {
+      dbOperations.users.getHighScore(mongoDb, (err, result) => {
         if (err) {
           res.sendStatus(500);
         } else {
