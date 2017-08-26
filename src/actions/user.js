@@ -1,8 +1,6 @@
 import * as types from '../constants/ActionTypes';
 import axios from 'axios';
-import { dispatchable, handle403 } from './';
-
-const serverUrl = 'http://localhost:8989';
+import { dispatchable, handle403, serverUrl } from './';
 
 export const getProfile = () => dispatch => {
   axios.get(serverUrl + '/profile', { withCredentials: true }).then( response => {

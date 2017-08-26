@@ -4,6 +4,7 @@ export * from './user';
 export * from './partcipants';
 export * from './tags';
 
+export const serverUrl = 'http://146.185.155.128:8989';
 
 export const dispatchable = (type, payLoad) => ({
   type,

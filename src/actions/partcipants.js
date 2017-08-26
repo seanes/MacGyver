@@ -1,7 +1,6 @@
 import * as types from '../constants/ActionTypes';
-import { dispatchable, handle403 } from './';
+import { dispatchable, handle403, serverUrl } from './';
 import axios from 'axios';
-const serverUrl = 'http://localhost:8989';
 
 
 export const getParticipants = participants => dispatch => {
