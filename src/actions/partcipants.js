@@ -12,8 +12,11 @@ export const getParticipants = participants => dispatch => {
 
   axios.get(serverUrl + '/participants', { withCredentials: true }).then( response => {
     if (response.data) {
+
+      const participants = response.data.sort( (a,b ) => a.firstName.localeCompare(b.firstName));
+
       dispatch(dispatchable(
-        types.GET_PARTICIPANTS, response.data
+        types.GET_PARTICIPANTS, participants
       ));
     }
   }).catch( err => {
