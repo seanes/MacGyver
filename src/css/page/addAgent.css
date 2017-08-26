@@ -24,6 +24,18 @@ div.addAgentMsg {
   text-align: center;
 }
 
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+}
+
+.agentCount {
+  color: #f43820;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
 .caughtAgents {
   margin: 20px 20px 0;
 }

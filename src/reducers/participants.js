@@ -2,6 +2,7 @@ import * as types from '../constants/ActionTypes';
 
 const initialState = {
   data: [],
+  isLoading: false,
   agents: {
     data: [],
     message: null
@@ -13,7 +14,13 @@ export default (state = initialState, action) => {
 
     case types.GET_PARTICIPANTS:
       return Object.assign({}, state, {
-        data: action.payLoad
+        data: action.payLoad,
+        isLoading: false,
+      });
+
+    case types.FETHCING_PARTICIPANTS:
+      return Object.assign({}, state, {
+        isLoading: true,
       });
 
     case types.GET_CAUGHT_AGENTS:

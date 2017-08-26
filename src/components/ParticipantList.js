@@ -1,6 +1,9 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import Participant from './Participant';
+import Loading from '../images/loading.svg';
+import styles from '../css/components/loading.css';
+
 
 class ParticipantList extends React.Component {
 
@@ -10,7 +13,13 @@ class ParticipantList extends React.Component {
 
   render() {
 
-    const { participants } = this.props;
+    const { participants, isLoading } = this.props;
+
+    if (isLoading) {
+      return <div className={styles.loading}>
+        <img src={Loading}/>
+      </div>
+    }
 
     return (
       <div>

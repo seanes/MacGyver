@@ -11,7 +11,10 @@ class CaughtAgentsComponents extends React.Component {
       <div className={styles.caughtAgents}>
         {agents && agents.length
           ? <div>
-              <h1>Agenter du har lagt til</h1>
+              <div className={styles.summary}>
+                <h1>Agenter du har lagt til</h1>
+                <div className={styles.agentCount}>{agents ? agents.length: 0}</div>
+              </div>
               {agents.map((agent, index) => (
                   <div key={'agent-' + index} className={styles.agent}>
                     <div className={styles.agentImage}>

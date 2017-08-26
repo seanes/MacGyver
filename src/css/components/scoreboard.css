@@ -25,6 +25,7 @@
   color: #f43820;
   font-weight: bold;
   text-align: right;
+  margin-right: 15px;
 }
 
 .scoreboardRow .name {

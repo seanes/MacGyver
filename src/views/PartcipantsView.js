@@ -12,17 +12,20 @@ class PartcipantsView extends React.Component {
 
   render() {
 
+    const { participants, isLoading } = this.props;
+
     return (
       <div>
         <Helmet title="All partcipants"/>
-        <ParticipantList participants={this.props.participants}/>
+        <ParticipantList isLoading={isLoading} participants={participants}/>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  participants: state.participants.data
+  participants: state.participants.data,
+  isLoading: state.participants.isLoading,
 });
 
 export default connect(mapStateToProps)(PartcipantsView);

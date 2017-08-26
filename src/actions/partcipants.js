@@ -5,6 +5,11 @@ const serverUrl = 'http://localhost:8989';
 
 
 export const getParticipants = participants => dispatch => {
+
+  dispatch(dispatchable(
+    types.FETHCING_PARTICIPANTS, null
+  ));
+
   axios.get(serverUrl + '/participants', { withCredentials: true }).then( response => {
     if (response.data) {
       dispatch(dispatchable(
