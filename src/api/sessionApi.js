@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { serverUrl } from './../actions/';
-import URLSearchParams from 'url-search-params';
+import qs from 'querystring';
 
 const config = {
   headers: {
@@ -11,10 +11,10 @@ const config = {
 };
 
 export const login = ({username, password}) => {
-  var params = new URLSearchParams();
-  params.append('username', username.toLowerCase());
-  params.append('password', password);
-  return axios.post(serverUrl + '/login', params, config);
-}
+  return axios.post(serverUrl + '/login', qs.stringify({
+    'username': username.toLowerCase(),
+    'password': password
+  }), config);
+};
 
 export const logout = () => axios.post(serverUrl + '/logout', null, config);
