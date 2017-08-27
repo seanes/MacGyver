@@ -11,8 +11,7 @@ const config = {
 
 export const login = ({username, password}) => {
   var params = new URLSearchParams();
-  params.append('username', username);
-  // TODO: hash the password
+  params.append('username', username.toLowerCase());
   params.append('password', password);
   return axios.post(serverUrl + '/login', params, config);
 }
