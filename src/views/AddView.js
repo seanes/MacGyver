@@ -2,13 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import AddAgentComponent from '../components/AddAgent';
-import { getAgentsCaught, addAgent } from '../actions/partcipants';
 import {  getProfile } from '../actions/user';
+import { getAgentsCaught, addAgent } from '../actions/partcipants';
 
 class AddView extends React.Component {
   componentDidMount() {
+    setTimeout(() => {
+      window.scrollTo(0,1);
+    }, 100);
     this.props.dispatch(getAgentsCaught());
-
     if (!this.props.profile) {
       this.props.dispatch(getProfile());
     }
@@ -19,6 +21,7 @@ class AddView extends React.Component {
   }
 
   render() {
+
     return (
       <div>
         <Helmet title="Add agent" />
@@ -36,7 +39,7 @@ class AddView extends React.Component {
 const mapStateToProps = state => ({
   agents: state.participants.agents.data,
   message: state.participants.agents.message,
-  profile: state.user.profile
+  profile: state.user
 });
 
 export default connect(mapStateToProps)(AddView);
