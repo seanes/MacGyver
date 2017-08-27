@@ -21,11 +21,28 @@ class ParticipantList extends React.Component {
       </div>
     }
 
+    let foundLetter = '';
+
+    const participantList = participants.length && participants.map( (participant, index) => {
+
+      const { firstName } = participant;
+
+      const firstName1stLetter = firstName[0].toLowerCase();
+      let anchorEl = null;
+
+      if (firstName1stLetter !== foundLetter) {
+        anchorEl = firstName1stLetter;
+        foundLetter = firstName1stLetter;
+      }
+
+      return (
+        <Participant anchorEl={anchorEl} data={participant} key={"participant-" + index}/>
+      )
+    });
+
     return (
-      <div>
-        { participants.length ? participants.map( (participant, index) => (
-          <Participant data={participant} key={"participant-" + index}/>
-        ))
+      <div style={{paddingTop: 10}}>
+        { participants.length ? participantList
           : <span>No participants found</span>
         }
       </div>

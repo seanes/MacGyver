@@ -19,7 +19,7 @@ class Participant extends React.Component {
 
   render() {
 
-    const { activeTags, data } = this.props;
+    const { activeTags, data, anchorEl } = this.props;
     const { firstName, lastName, description, image, tags } = data;
 
     let allTagsAreFound = true;
@@ -29,8 +29,10 @@ class Participant extends React.Component {
 
     if (!allTagsAreFound) return null;
 
+    const id = 'anchor-' + anchorEl || 'ignore';
+
     return (
-      <div>
+      <div id={id}>
         <div className={CSSParticipant.participant}>
           <img src={image || NoImage} className={CSSParticipant.image}/>
           <div className={CSSParticipant.nameBlock}>
