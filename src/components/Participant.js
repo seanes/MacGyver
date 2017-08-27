@@ -19,7 +19,7 @@ class Participant extends React.Component {
 
   render() {
 
-    const { activeTags, data, anchorEl } = this.props;
+    const { activeTags, data, anchorEl, handleShowImage } = this.props;
     const { firstName, lastName, description, image, tags } = data;
 
     let allTagsAreFound = true;
@@ -34,7 +34,7 @@ class Participant extends React.Component {
     return (
       <div id={id}>
         <div className={CSSParticipant.participant}>
-          <img src={image || NoImage} className={CSSParticipant.image}/>
+          <img onClick={() => handleShowImage(image || NoImage)} src={image || NoImage} className={CSSParticipant.image}/>
           <div className={CSSParticipant.nameBlock}>
             <span className={CSSParticipant.name}>{firstName} {lastName}</span>
             <span className={CSSParticipant.description}>{description}</span>

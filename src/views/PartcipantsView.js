@@ -14,9 +14,9 @@ class PartcipantsView extends React.Component {
   handleOnLetterClick(letter) {
     const el = document.getElementById('anchor-' + letter.toLowerCase());
     if (el) {
-      window.scrollTo(0, el.offsetTop-50);
+      window.scrollTo(0, el.offsetTop - 50);
     }
-  };
+  }
 
   render() {
     const { participants, isLoading } = this.props;
@@ -35,24 +35,30 @@ class PartcipantsView extends React.Component {
     capitaLetter.sort((a, b) => a.localeCompare(b, 'nb'));
 
     return (
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
         <Helmet title="All partcipants" />
         <div
           style={{
             display: !isLoading ? 'flex' : 'none',
-            position: 'fixed',
-            top: 0,
-            width: '96%',
             justifyContent: 'space-between',
             color: '#fff',
             borderRadius: 2,
-            padding: '2%',
+            flex: 1,
+            padding: '5px 2%',
+            position: 'fixed',
+            width: '96%',
             background: '#f43820'
           }}
         >
-          {capitaLetter.map(l => <div onClick={() => this.handleOnLetterClick(l)} key={l}>{l}</div>)}
+          {capitaLetter.map(l =>
+            <div
+              style={{fontSize: '0.9em'}}
+              onClick={() => this.handleOnLetterClick(l)} key={l}>{l}</div>
+          )}
         </div>
-        <ParticipantList isLoading={isLoading} participants={participants} />
+        <div>
+          <ParticipantList isLoading={isLoading} participants={participants} />
+        </div>
       </div>
     );
   }
