@@ -1,5 +1,5 @@
 import React from 'react';
-import Tag from '../components/Tag'
+import ProfileTag from '../components/ProfileTag';
 import styles from '../css/page/profile.css'
 import NoImage from '../images/no_image.png';
 import AgentIcon from './icons/AgentIcon';
@@ -36,7 +36,7 @@ class ProfileDetails extends React.Component {
         </div>
         <div className={styles.tagCloud}>
           {profile.tags.map( (tag, index) => (
-            <Tag key={'tag-'+index}text={tag} />
+            <ProfileTag key={'tag-'+index}text={tag} />
           ))}
         </div>
       </div>

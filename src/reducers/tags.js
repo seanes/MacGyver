@@ -6,9 +6,12 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case types.CLICK_PROFILE_TAG:
+      return Object.assign({}, state, {
+        active: [action.payLoad]
+      });
 
     case types.CLICK_TAG:
-
       const isAdded = state.active.indexOf(action.payLoad) > -1;
 
       let newActive = [];
@@ -16,7 +19,7 @@ export default (state = initialState, action) => {
       if (!isAdded) {
         newActive = state.active.concat(action.payLoad);
       } else {
-        newActive = state.active.filter( tag => tag !== action.payLoad)
+        newActive = state.active.filter(tag => tag !== action.payLoad);
       }
 
       return Object.assign({}, state, {
@@ -26,4 +29,4 @@ export default (state = initialState, action) => {
     default:
       return state;
   }
-}
+};

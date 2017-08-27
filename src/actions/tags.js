@@ -7,3 +7,10 @@ export const clickTag = tagName => dispatch => {
     tagName
   ));
 };
+
+export const clickProfileTag = tagName => dispatch => {
+  dispatch(dispatchable(
+    types.CLICK_PROFILE_TAG,
+    tagName
+  ));
+};
