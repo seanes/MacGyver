@@ -6,6 +6,9 @@ import { withRouter } from 'react-router-dom';
 import { logout } from '../actions/sessionActions';
 import { connect } from 'react-redux';
 import { getProfile } from '../actions/';
+import { openWalkthrough } from '../actions/user';
+import { closeWalkthrough } from '../actions/user';
+import Walkthrough from '../components/Walkthrough';
 import ProfileDetails from '../components/ProfileDetails';
 
 class HomeView extends React.Component {
@@ -14,7 +17,14 @@ class HomeView extends React.Component {
     this.props.dispatch(getProfile());
   }
 
+
+  handleClose() {
+    this.props.dispatch(closeWalkthrough());
+  }
+
   render () {
+
+    const { showWalkthrough } = this.props;
 
     const LogoutButton = withRouter(({ history }) => (
       <button
@@ -25,17 +35,29 @@ class HomeView extends React.Component {
     return (
       <div>
         <Helmet title="Profil"/>
-        <ProfileDetails profile={this.props.profile}/>
-        <div className={styles.logout}>
-          <LogoutButton/>
-        </div>
+        { showWalkthrough ?
+          <Walkthrough handleClose={this.handleClose.bind(this)}/>
+          :
+          <div>
+            <ProfileDetails profile={this.props.profile}/>
+            <div style={{marginBottom: 8}}>
+              <button
+                className={CSSButton.success + ' ' + CSSButton.full}
+                onClick={() => this.props.dispatch(openWalkthrough())}>Hva er greia?</button>
+            </div>
+            <div className={styles.logout}>
+              <LogoutButton/>
+            </div>
+          </div>
+        }
       </div>
     )
   }
 }
 
 const mapStateToProps = state => ({
-  profile: state.user.profile
+  profile: state.user.profile,
+  showWalkthrough: state.user.showWalkthrough
 });
 
 export default connect(mapStateToProps)(HomeView);

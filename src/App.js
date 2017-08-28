@@ -18,7 +18,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { authenticated, checked } = this.props;
+    const { authenticated, checked, isShowingWalkthrough } = this.props;
     return (
       <div>
         <Router>
@@ -48,7 +48,7 @@ class App extends React.Component {
               />
               <Route path="/login" component={LoginView} />
             </div>
-            {authenticated &&
+            {authenticated && !isShowingWalkthrough &&
             <TabBar/>}
           </div>}
         </Router>
@@ -58,9 +58,10 @@ class App extends React.Component {
 }
 
 
-const mapStateToProps = ({ session, route }) => ({
+const mapStateToProps = ({ session, route, user }) => ({
   checked: session.checked,
   authenticated: session.authenticated,
+  isShowingWalkthrough: user.showWalkthrough
 });
 
 export default connect(mapStateToProps)(App);
