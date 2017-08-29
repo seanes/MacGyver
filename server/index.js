@@ -12,7 +12,7 @@ const flash = require('connect-flash');
 const cors = require('cors');
 const MongoClient = require('mongodb').MongoClient;
 const cache = apicache.middleware;
-const originUrl = process.env.NODE_ENV === 'production' ? 'http://146.185.155.128:5000' : 'http://localhost:3000';
+const originUrl = process.env.NODE_ENV === 'production' ? 'http://www.bekhoff.no' : 'http://localhost:3000';
 
 
 MongoClient.connect('mongodb://sean:scully@ds017776.mlab.com:17776/macgyver-test', (err, mongoDb) => {

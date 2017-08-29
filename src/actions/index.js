@@ -5,7 +5,7 @@ export * from './partcipants';
 export * from './tags';
 
 export const serverUrl = process.env.NODE_ENV === 'production'
-  ? 'http://146.185.155.128:8989'
+  ? 'http://www.bekhoff.no:8989'
   : 'http://localhost:8989';
 
 export const dispatchable = (type, payLoad) => ({
