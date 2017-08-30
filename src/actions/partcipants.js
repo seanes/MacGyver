@@ -2,7 +2,6 @@ import * as types from '../constants/ActionTypes';
 import { dispatchable, handle403, serverUrl } from './';
 import axios from 'axios';
 
-
 export const getParticipants = participants => dispatch => {
 
   dispatch(dispatchable(
@@ -12,7 +11,7 @@ export const getParticipants = participants => dispatch => {
   axios.get(serverUrl + '/participants', { withCredentials: true }).then( response => {
     if (response.data) {
 
-      const participants = response.data.sort( (a,b ) => a.firstName.localeCompare(b.firstName));
+      const participants = response.data.sort( (a,b ) => a.firstName.localeCompare(b.firstName, 'nb'));
 
       dispatch(dispatchable(
         types.GET_PARTICIPANTS, participants

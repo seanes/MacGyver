@@ -118,23 +118,39 @@ exports.findProfile = (db, userId, cb) => {
   });
 };
 
-exports.getHighScore = (db, cb) => {
+exports.getHighScore = (db, participantId, cb) => {
   process.nextTick(() => {
     db
       .collection('agents')
       .find()
       .sort({ score: -1 })
-      .limit(10)
       .toArray(function(err, results) {
         if (err) {
           cb(err, null);
         } else {
+
           const highscoreList = results.map((record, index) => ({
             name: record.fullName,
             score: record.score || 0,
             rank: index + 1
           }));
-          cb(null, highscoreList);
+
+          db.collection('agents')
+          .find({participantId: participantId})
+          .toArray((err, results) => {
+            if (results && results.length) {
+              cb(null, {
+                list: highscoreList,
+                myScore: results[0].score || 0
+              });
+            } else {
+              cb(null, {
+                list: highscoreList,
+                myScore: 0
+              });
+            }
+          });
+
         }
       });
   });

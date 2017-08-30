@@ -34,11 +34,18 @@ class ScoreBoardView extends React.Component {
   };
 
   render() {
-    const { highscore } = this.props;
+    const { highscore, myScore } = this.props;
+
+    if (highscore && !highscore.length) return null;
 
     return (
       <div>
         <Helmet title="Scoreboard" />
+        { (myScore !== null) &&
+          <div style={{padding: 10, fontSize: '1em', background: '#f43820', color: '#fff', fontWeight: 600}}>
+            Du har {myScore} poeng
+          </div>
+        }
         <ScoreboardComponent highscore={highscore} />
       </div>
     );
@@ -46,7 +53,8 @@ class ScoreBoardView extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  highscore: state.highscore.data
+  highscore: state.highscore.data,
+  myScore: state.highscore.myScore
 });
 
 export default connect(mapStateToProps)(ScoreBoardView);

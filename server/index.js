@@ -12,8 +12,6 @@ const flash = require('connect-flash');
 const cors = require('cors');
 const MongoClient = require('mongodb').MongoClient;
 const cache = apicache.middleware;
-const originUrl = process.env.NODE_ENV === 'production' ? 'http://www.bekhoff.no' : 'http://localhost:3000';
-
 
 MongoClient.connect('mongodb://sean:scully@ds017776.mlab.com:17776/macgyver-test', (err, mongoDb) => {
   var app = express();
@@ -65,7 +63,7 @@ MongoClient.connect('mongodb://sean:scully@ds017776.mlab.com:17776/macgyver-test
   });
 
 
-  app.use(cors({ origin: originUrl, methods:['GET','POST', 'OPTIONS'], credentials: true }));
+  app.use(cors({ origin: true, methods:['GET','POST', 'OPTIONS'], credentials: true }));
 
   app.post('/login',
     passport.authenticate('local', { failWithError: true }),
@@ -98,7 +96,7 @@ MongoClient.connect('mongodb://sean:scully@ds017776.mlab.com:17776/macgyver-test
     });
 
   app.get('/participants',
-    [ensureLogin, cache('12 hours')],
+    [ensureLogin, cache('1 month')],
     (req, res) => {
       process.nextTick(() => {
         mongoDb.collection('participants').find({}, {agentName: 0}).sort().toArray(function(err, results) {
@@ -130,7 +128,7 @@ MongoClient.connect('mongodb://sean:scully@ds017776.mlab.com:17776/macgyver-test
   app.get('/highscore',
     ensureLogin,
     (req, res) => {
-      dbOperations.users.getHighScore(mongoDb, (err, result) => {
+      dbOperations.users.getHighScore(mongoDb, req.user.participantId, (err, result) => {
         if (err) {
           res.sendStatus(500);
         } else {

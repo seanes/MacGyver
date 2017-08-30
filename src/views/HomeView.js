@@ -40,12 +40,12 @@ class HomeView extends React.Component {
           :
           <div>
             <ProfileDetails profile={this.props.profile}/>
-            <div style={{marginBottom: 8}}>
+            <div style={{marginBottom: 8, textAlign: 'center'}}>
               <button
                 className={CSSButton.success + ' ' + CSSButton.full}
                 onClick={() => this.props.dispatch(openWalkthrough())}>Hva er greia?</button>
             </div>
-            <div className={styles.logout}>
+            <div style={{textAlign: 'center'}} className={styles.logout}>
               <LogoutButton/>
             </div>
           </div>

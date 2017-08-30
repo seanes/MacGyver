@@ -1,7 +1,8 @@
 import * as types from '../constants/ActionTypes';
 
 const initialState = {
-  data: []
+  data: [],
+  myScore: null
 };
 
 export default (state = initialState, action) => {
@@ -9,7 +10,8 @@ export default (state = initialState, action) => {
 
     case types.GET_HIGHSCORE:
       return Object.assign({}, state, {
-        data: action.payLoad,
+        data: action.payLoad.list,
+        myScore: action.payLoad.myScore
       });
 
     default:

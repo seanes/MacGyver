@@ -4,7 +4,7 @@
 
 h1.title {
     font-size: 1.2em;
-    margin: auto 20px;
+    margin: auto 0px;
 }
 
 .close {
@@ -33,12 +33,21 @@ h1.title {
     width: 95%;
 }
 
-.content {
-    margin: 20px;
-}
 
 .text {
     font-size: 0.9em;
-    color: #4b4b4b;
+    color: #000000;
     line-height: 1.1rem;
+    margin-bottom: 10px;
+}
+
+li {
+    font-size: 0.9em;
+    margin-bottom: 8px;
+}
+
+.bold {
+    font-weight: 600;
+    font-size: 0.9em;
+    color: #000;
 }
