@@ -27,6 +27,7 @@ exports.addAgent = (db, userId, agentName, cb) => {
         let score = record.score || 0;
         let collectedTags = record.collectedTags;
         let myTags = record.myTags;
+        let myAgentName = record.agentName;
 
         const alreadyAdded = caughtAgents.some(
           caught =>
@@ -80,7 +81,10 @@ exports.addAgent = (db, userId, agentName, cb) => {
                 return;
               }
 
-              cb(null, caughtAgents);
+              cb(null, {
+                myAgentName: myAgentName,
+                caught: caughtAgents
+              });
             });
           });
       });

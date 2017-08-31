@@ -81,7 +81,7 @@ class PartcipantsView extends React.Component {
               style={{fontSize: '0.7em', fontWeight: 600 }}
               onClick={this.handleRemoveAllFilters.bind(this)}
             >
-              FJERN ALLE FILTRE
+              FJERN FILTRE
             </div>
           </div>
         }
