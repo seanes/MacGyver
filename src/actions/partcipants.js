@@ -34,14 +34,22 @@ export const getHighscore = () => dispatch => {
   });
 };
 
+export const removeAllFilters = () => dispatch => dispatch(dispatchable(
+  types.REMOVE_ALL_FILTERS, null
+));
+
 export const getAgentsCaught = () => dispatch => {
   axios.get(serverUrl + '/agents', { withCredentials: true }).then( response => {
-    if (response.data) {
 
-      const agents = response.data.sort((a,b) => new Date(b.added) - new Date(a.added));
+    if (response.data && response.data.caught) {
+
+      const agents = response.data.caught.sort((a,b) => new Date(b.added) - new Date(a.added));
 
       dispatch(dispatchable(
-        types.GET_CAUGHT_AGENTS, agents
+        types.GET_CAUGHT_AGENTS, {
+          agents,
+          myAgentName: response.data.myAgentName
+        }
       ));
     }
   }).catch( err => {

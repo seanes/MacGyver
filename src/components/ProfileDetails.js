@@ -3,7 +3,8 @@ import ProfileTag from '../components/ProfileTag';
 import styles from '../css/page/profile.css'
 import NoImage from '../images/no_image.png';
 import AgentIcon from './icons/AgentIcon';
-
+import loading from '../css/components/loading.css';
+import LoadingSvg from '../images/loading.svg';
 
 class ProfileDetails extends React.Component {
 
@@ -11,7 +12,11 @@ class ProfileDetails extends React.Component {
 
     const { profile } = this.props;
 
-    if (!profile) return null;
+    if (!profile) return (
+      <div className={loading.loading}>
+        <img src={LoadingSvg} />
+      </div>
+    );
 
     return (
       <div className={styles.profile}>

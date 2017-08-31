@@ -14,9 +14,10 @@ import ProfileDetails from '../components/ProfileDetails';
 class HomeView extends React.Component {
 
   componentDidMount() {
-    this.props.dispatch(getProfile());
+    if (!this.props.profile) {
+      this.props.dispatch(getProfile());
+    }
   }
-
 
   handleClose() {
     this.props.dispatch(closeWalkthrough());

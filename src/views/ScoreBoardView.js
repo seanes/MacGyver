@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import ScoreboardComponent from '../components/Scoreboard';
 import { getHighscore } from '../actions/partcipants';
+import loading from '../css/components/loading.css';
+import LoadingSvg from '../images/loading.svg';
 
 class ScoreBoardView extends React.Component {
 
@@ -36,7 +38,11 @@ class ScoreBoardView extends React.Component {
   render() {
     const { highscore, myScore } = this.props;
 
-    if (highscore && !highscore.length) return null;
+    if (highscore && !highscore.length) return (
+      <div className={loading.loading}>
+        <img src={LoadingSvg} />
+      </div>
+    );
 
     return (
       <div>

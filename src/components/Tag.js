@@ -23,7 +23,7 @@ class TagComponent extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  activeTags: state.tags.active
+  activeTags: state.participants.active
 });
 
 export default withRouter(connect(mapStateToProps)(TagComponent));

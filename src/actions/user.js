@@ -26,3 +26,9 @@ export const openWalkthrough = () => dispatch => {
     types.OPEN_WALKTHROUGH, null
   ));
 };
+
+export const clearUserFromState = () => dispatch => {
+  dispatch(dispatchable(
+    types.CLEAR_USER_FROM_STATE, null
+  ));
+}

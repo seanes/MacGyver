@@ -1,5 +1,6 @@
 import { sessionService } from 'redux-react-session';
 import * as sessionApi from '../api/sessionApi';
+import { clearUserFromState } from '../actions/user';
 
 export const login = (user, history) => {
   return () => {
@@ -17,10 +18,11 @@ export const login = (user, history) => {
 };
 
 export const logout = (history) => {
-  return () => {
+  return (dispatch) => {
     return sessionApi.logout().then(() => {
       sessionService.deleteSession();
       sessionService.deleteUser();
+      dispatch(clearUserFromState());
       history.push('/login');
     }).catch(err => {
       throw (err);

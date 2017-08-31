@@ -22,6 +22,11 @@ export default (state = initialState, action) => {
         profile: action.payLoad
       });
 
+    case types.CLEAR_USER_FROM_STATE:
+      return Object.assign({}, state, {
+        profile: null
+      });
+
     case types.CLOSE_WALKTHROUGH:
       return Object.assign({}, state, {
         showWalkthrough: false

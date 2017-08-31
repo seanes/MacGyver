@@ -54,6 +54,7 @@ div.addAgentMsg {
   line-height: 0;
   vertical-align: middle;
   background: #f43820;
+  margin-top: -10px;
 }
 
 .caughtAgents {
@@ -63,6 +64,13 @@ div.addAgentMsg {
 .caughtAgents h1 {
   font-weight: bold;
   margin-bottom: 30px;
+  text-transform: uppercase;
+  font-size: .8em;
+}
+
+div.caughtAgents {
+  font-weight: bold;
+  margin-bottom: 5px;
   text-transform: uppercase;
   font-size: .8em;
 }
@@ -78,6 +86,8 @@ div.addAgentMsg {
   border-radius: 50%;
   width: 40px;
   height: 40px;
+  max-height: 40px;
+  max-width: 40px;
   background-color: #f43820;
   text-align: center;
   line-height: 0px;

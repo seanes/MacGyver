@@ -4,6 +4,7 @@ import Participant from './Participant';
 import Loading from '../images/loading.svg';
 import styles from '../css/components/loading.css';
 import Lightbox from 'react-image-lightbox';
+import { connect } from 'react-redux';
 
 class ParticipantList extends React.Component {
   static propTypes = {
@@ -26,7 +27,7 @@ class ParticipantList extends React.Component {
   }
 
   render() {
-    const { participants, isLoading } = this.props;
+    const { participants, isLoading, filteredParticipants } = this.props;
     const { isOpen, image } = this.state;
 
     if (isLoading) {
@@ -40,8 +41,8 @@ class ParticipantList extends React.Component {
     let foundLetter = '';
 
     const participantList =
-      participants.length &&
-      participants.map((participant, index) => {
+      filteredParticipants.length &&
+      filteredParticipants.map((participant, index) => {
         const { firstName } = participant;
 
         const firstName1stLetter = firstName[0].toLowerCase();
@@ -77,4 +78,10 @@ class ParticipantList extends React.Component {
   }
 }
 
-export default ParticipantList;
+const mapStateToProps = state => ({
+  activeTags: state.participants.active,
+  filteredParticipants: state.participants.filteredParticipants,
+  isLoading: state.participants.isLoading
+});
+
+export default connect(mapStateToProps)(ParticipantList);

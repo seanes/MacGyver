@@ -97,7 +97,10 @@ exports.findCaughtAgents = (db, participantId, cb) => {
           if (err || record === null) {
             cb(err, null);
           } else {
-            cb(null, record.caughtAgents);
+            cb(null, {
+                caught: record.caughtAgents,
+                myAgentName: record.agentName
+            });
           }
         }
       );
