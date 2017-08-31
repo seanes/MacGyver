@@ -29,7 +29,8 @@ export default (state = initialState, action) => {
     case types.CLEAR_USER_FROM_STATE:
       return Object.assign({}, state, {
         active: [],
-        filteredParticipants: state.participants.slice(),
+        filteredParticipants: [],
+        data: [],
         filteredLetters: state.letters,
         agents: {
           data: [],
