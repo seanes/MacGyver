@@ -5,7 +5,7 @@ const addScoreForAgent = (score, agentName) => {
     scoreInc = 30;
   }
 
-  if (agentName === 'Politisk fravær' || agentName === 'Gute Stimmung') {
+  if (agentName === 'Politisk fravær' || agentName === 'Sehr teuer') {
     scoreInc = 50;
   }
 
