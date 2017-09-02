@@ -67,7 +67,7 @@ exports.addAgent = (db, userId, agentName, cb) => {
 
             score = ScoreCalculator.addScoreForTagCount(score, collectedTags.length, newCollectedTags.length);
 
-            score = ScoreCalculator.addScoreForAgent(score);
+            score = ScoreCalculator.addScoreForAgent(score, agent.agentName);
 
             db.collection('agents').updateOne({ _id: record._id }, {
               $set: {
