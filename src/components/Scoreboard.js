@@ -19,7 +19,7 @@ class ScoreboardComponent extends React.Component {
       scoreboard: true
     });
 
-    const { highscore } = this.props;
+    const { highscore, myName } = this.props;
     const { showAll } = this.state;
 
     return (
@@ -27,7 +27,7 @@ class ScoreboardComponent extends React.Component {
         {highscore
           .slice(0, showAll ? highscore.length : 10)
           .map((participant, i) =>
-            <ScoreboardRowComponent key={i} participant={participant} />
+            <ScoreboardRowComponent key={i} participant={participant} myName={myName}/>
           )}
         <div
           style={{

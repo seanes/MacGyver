@@ -36,7 +36,7 @@ class ScoreBoardView extends React.Component {
   };
 
   render() {
-    const { highscore, myScore } = this.props;
+    const { highscore, myScore, myName } = this.props;
 
     if (highscore && !highscore.length) return (
       <div className={loading.loading}>
@@ -52,7 +52,7 @@ class ScoreBoardView extends React.Component {
             Du har {myScore} poeng
           </div>
         }
-        <ScoreboardComponent highscore={highscore} />
+        <ScoreboardComponent highscore={highscore} myName={myName}/>
       </div>
     );
   }
@@ -60,7 +60,8 @@ class ScoreBoardView extends React.Component {
 
 const mapStateToProps = state => ({
   highscore: state.highscore.data,
-  myScore: state.highscore.myScore
+  myScore: state.highscore.myScore,
+  myName: state.highscore.myName,
 });
 
 export default connect(mapStateToProps)(ScoreBoardView);

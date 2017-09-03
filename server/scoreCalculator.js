@@ -1,19 +1,16 @@
 const addScoreForAgent = (score, agentName) => {
-  let scoreInc = 10;
-
-  if (agentName === 'Kjekk og stram' || 'Indisk sommer' || 'Au au' || 'Alderstilpasset opplæring') {
-    scoreInc = 30;
+  if (agentName === 'Kjekk og stram' || agentName === 'Indisk sommer' || agentName === 'Au au' || agentName === 'Alderstilpasset opplæring') {
+    return score +30;
   }
 
   if (agentName === 'Politisk fravær' || agentName === 'Sehr teuer') {
-    scoreInc = 50;
+    return score + 50;
   }
 
   if (agentName === 'Lose yourself') {
-    scoreInc = 40;
+    return score +40;
   }
-
-  return (score || 0) + scoreInc;
+  return score + 10;
 };
 
 // first 10 tags => 10 points, next 10 tags => 20 points, etc.
@@ -46,8 +43,7 @@ const addNewTags = (myTags, collectedTags, addedAgentTags) => {
   return collectedTags.concat(tagsNotInCollection);
 };
 
-
-export const addScoreForTagNewTags = (score, myTags, newTags) => {
+ const addScoreForTagNewTags = (score, myTags, newTags) => {
   let scoreInc = 0;
   newTags.forEach( tag => {
     scoreInc += myTags[tag];
@@ -55,7 +51,7 @@ export const addScoreForTagNewTags = (score, myTags, newTags) => {
   return score + scoreInc;
 };
 
-export const addTagsForNewAgent = (myTags, newTags) => {
+const addTagsForNewAgent = (myTags, newTags) => {
   if (!newTags) return myTags;
 
   newTags.forEach( tag => {
@@ -68,3 +64,5 @@ export const addTagsForNewAgent = (myTags, newTags) => {
 exports.addScoreForAgent = addScoreForAgent;
 exports.getNewCollectedTags = addNewTags;
 exports.addScoreForTagCount = addScoreForTagCount;
+exports.addScoreForTagNewTags = addScoreForTagNewTags;
+exports.addTagsForNewAgent = addTagsForNewAgent;

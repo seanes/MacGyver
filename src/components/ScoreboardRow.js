@@ -5,10 +5,14 @@ import classNames from 'classnames/bind';
 let cx = classNames.bind(styles);
 
 class ScoreboardRowComponent extends React.Component {
+
   render() {
+
+    const { myName } = this.props;
+
     let rowClassName = cx({
           scoreboardRow: true,
-          first: this.props.participant.rank == "1"
+          first: this.props.participant.name === myName
     });
 
     return (

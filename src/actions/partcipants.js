@@ -71,6 +71,7 @@ export const addAgent = agentName => (dispatch, getState) => {
     axios.post(serverUrl + '/agents', { agentName }, { withCredentials: true }).then( response => {
       if (response.data.caught && response.data.myAgentName) {
         const agents = response.data.caught.sort((a,b) => new Date(b.added) - new Date(a.added));
+        const scoreIc = response.data.scoreInc;
         dispatch(dispatchable(
           types.GET_CAUGHT_AGENTS, {
             agents,
@@ -78,7 +79,7 @@ export const addAgent = agentName => (dispatch, getState) => {
           }
         ));
         dispatch(dispatchable(
-          types.AGENT_CODE_MESSAGE, "Agent lagt til!"
+          types.AGENT_CODE_MESSAGE, "Agent lagt til! +" + scoreIc + " poeng"
         ));
       }
     }).catch( err => {
