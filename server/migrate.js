@@ -6,13 +6,10 @@ const insertAgents = (db, cb) => {
   db.collection('participants').find({}, {firstName: 1, lastName: 1, tags: 1, agentName: 1}).sort().toArray(function(err, results) {
     const agents = results.map( ({_id, firstName, lastName, tags, agentName}) => {
 
-      // replace "musikk with musiker"
-      let correctedTags = tags.map( tag => { if (tag === 'Musikk') return 'Musiker'; return tag})
-
       return {
         participantId: _id,
         fullName: firstName + ' ' + lastName,
-        myTags: correctedTags,
+        myTags: tags,
         caughtAgents: [],
         score: 0,
         agentName,

@@ -28,6 +28,7 @@ exports.addAgent = (db, userId, agentName, cb) => {
         let collectedTags = record.collectedTags;
         let myTags = record.myTags;
         let myAgentName = record.agentName;
+        let allTagsMap = record.myTags;
 
         const alreadyAdded = caughtAgents.some(
           caught =>
@@ -67,13 +68,18 @@ exports.addAgent = (db, userId, agentName, cb) => {
 
             score = ScoreCalculator.addScoreForTagCount(score, collectedTags.length, newCollectedTags.length);
 
+            allTagsMap = ScoreCalculator.addTagsForNewAgent(allTagsMap, agent.myTags);
+
+            score = ScoreCalculator.addScoreForTagNewTags(score, allTagsMap, agent.myTags);
+
             score = ScoreCalculator.addScoreForAgent(score, agent.agentName);
 
             db.collection('agents').updateOne({ _id: record._id }, {
               $set: {
                 score: score,
                 caughtAgents: caughtAgents,
-                collectedTags: newCollectedTags
+                collectedTags: newCollectedTags,
+                allTagsMap: allTagsMap
               }
             }, err => {
               if (err) {
@@ -148,6 +154,7 @@ exports.getHighScore = (db, participantId, cb) => {
             if (results && results.length) {
               cb(null, {
                 list: highscoreList,
+                myName: results[0].fullName,
                 myScore: results[0].score || 0
               });
             } else {

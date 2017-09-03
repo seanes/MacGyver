@@ -46,6 +46,25 @@ const addNewTags = (myTags, collectedTags, addedAgentTags) => {
   return collectedTags.concat(tagsNotInCollection);
 };
 
+
+export const addScoreForTagNewTags = (score, myTags, newTags) => {
+  let scoreInc = 0;
+  newTags.forEach( tag => {
+    scoreInc += myTags[tag];
+  });
+  return score + scoreInc;
+};
+
+export const addTagsForNewAgent = (myTags, newTags) => {
+  if (!newTags) return myTags;
+
+  newTags.forEach( tag => {
+    myTags[tag] = (myTags[tag]||0)+1;
+  });
+
+  return myTags;
+};
+
 exports.addScoreForAgent = addScoreForAgent;
 exports.getNewCollectedTags = addNewTags;
 exports.addScoreForTagCount = addScoreForTagCount;
