@@ -4,6 +4,8 @@ var Strategy = require('passport-local').Strategy;
 var bodyParser = require("body-parser");
 var dbOperations = require('./db');
 var apicache = require('apicache');
+var compression = require('compression')
+
 
 
 const port = process.env.port || 8989;
@@ -16,19 +18,14 @@ const cache = apicache.middleware;
 MongoClient.connect('mongodb://sean:scully@ds017776.mlab.com:17776/macgyver-test', (err, mongoDb) => {
   var app = express();
 
-  const errorHandler = (req, res, next) => {
-    console.log(req.sessionID);
-    next();
-  }
 
-  app.use(require('morgan')('combined'));
   app.use(bodyParser.json());
   app.use(require('body-parser').urlencoded({ extended: true }));
-  app.use(expressSession({ secret: 'SFVI', resave: false, saveUninitialized: false, cookie : { secure : false }}));
+  app.use(expressSession({ secret: 'SFVI', resave: false, saveUninitialized: false, cookie : { secure : false, maxAge: 604800000 }}));
   app.use(flash());
   app.use(passport.initialize());
   app.use(passport.session());
-  app.use(errorHandler);
+  app.use(compression());
 
 
   const ensureLogin = (req, res, next) => {
