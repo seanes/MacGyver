@@ -48,7 +48,7 @@ class ScoreBoardView extends React.Component {
       <div>
         <Helmet title="Scoreboard" />
         { (myScore !== null) &&
-          <div style={{padding: 10, fontSize: '1em', background: '#f43820', color: '#fff', fontWeight: 600}}>
+          <div style={{padding: 10, fontSize: '1em', background: '#577F4C', color: '#fff', fontWeight: 600}}>
             Du har {myScore} poeng
           </div>
         }

@@ -41,7 +41,7 @@ class PartcipantsView extends React.Component {
       position: 'fixed',
       top: 0,
       width: '96%',
-      background: '#f43820'
+      background: '#577F4C'
     };
 
     return (
@@ -70,7 +70,7 @@ class PartcipantsView extends React.Component {
               display: 'flex',
               justifyContent: 'space-between',
               paddingTop: 5,
-              borderTop: '1px solid #f8a3a3',
+              borderTop: '1px solid #a5c1a6',
               alignItems: 'center'
             }}
           >

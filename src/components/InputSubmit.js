@@ -29,7 +29,7 @@ class InputSubmitComponent extends React.Component {
             onClick={() => this.handleClick()}
             className={CSSButton.submit}
           >
-            <ChevronIcon color="#f43820" />
+            <ChevronIcon color="#577F4C" />
           </button>
         </div>
       </div>

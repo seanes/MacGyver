@@ -1,5 +1,6 @@
 const copyCollection = require('./copy_collection').copyCollection;
 const MongoClient = require('mongodb').MongoClient;
+const emails = require('./emails.json');
 
 
 const insertAgents = (db, cb) => {
@@ -26,6 +27,17 @@ const insertAgents = (db, cb) => {
 }
 
 const createPassword = () => Math.floor(Math.random() * (10000 - 0 + 1)) + 0;
+
+const getEmail = name => {
+  for (let i = 0; i < emails.length; i++) {
+    const item = emails[i];
+    if (item.name === name) {
+      return item.email;
+    }
+  }
+
+  console.log("unable to find email for " + name);
+}
 
 const createUsername = (firstName, lastName) => {
   let username = '';
@@ -55,7 +67,7 @@ const insertUsers = (db, cb) => {
         participantId: _id,
         username,
         password,
-        email: 'NOT USED'
+        email: getEmail(firstName.trim() + " " + lastName.trim())
       };
 
     });
@@ -79,4 +91,5 @@ copyCollection(sourceUrl, targetUrl, collectioName).then( results => {
     });
   });
 });
+
 

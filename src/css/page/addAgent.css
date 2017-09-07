@@ -5,12 +5,12 @@
 .agentInput {
   padding: 20px 20px 10px;
 
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f43820+0,f24330+100 */
-  background: #f43820; /* Old browsers */
-  background: -moz-linear-gradient(-45deg,  #f43820 0%, #f24330 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg,  #f43820 0%,#f24330 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg,  #f43820 0%,#f24330 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f43820', endColorstr='#f24330',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#577F4C+0,f24330+100 */
+  background: #577F4C; /* Old browsers */
+  background: -moz-linear-gradient(-45deg,  #577F4C 0%, #375a2f 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg,  #577F4C 0%,#375a2f 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg,  #577F4C 0%,#375a2f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#577F4C', endColorstr='#375a2f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
 .agentInput input {
@@ -53,7 +53,7 @@ div.addAgentMsg {
   width: 1rem;
   line-height: 0;
   vertical-align: middle;
-  background: #f43820;
+  background: #577F4C;
   margin-top: -10px;
 }
 
@@ -88,7 +88,7 @@ div.caughtAgents {
   height: 40px;
   max-height: 40px;
   max-width: 40px;
-  background-color: #f43820;
+  background-color: #577F4C;
   text-align: center;
   line-height: 0px;
   display: inline-block;
