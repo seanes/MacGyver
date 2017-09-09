@@ -79,7 +79,7 @@ const insertUsers = (db, cb) => {
 }
 
 const sourceUrl = 'mongodb://passenger:passenger123@ds029381.mlab.com:29381/karl_siriann';
-const targetUrl = 'mongodb://sean:scully@ds017776.mlab.com:17776/macgyver-test';
+const targetUrl = 'mongodb://passenger:scully@ds131904-a0.mlab.com:31904/karl-siriann-prod';
 const collectioName = 'participants';
 
 copyCollection(sourceUrl, targetUrl, collectioName).then( results => {

@@ -15,9 +15,9 @@ const cors = require('cors');
 const MongoClient = require('mongodb').MongoClient;
 const cache = apicache.middleware;
 
-MongoClient.connect('mongodb://sean:scully@ds017776.mlab.com:17776/macgyver-test', (err, mongoDb) => {
-  var app = express();
 
+MongoClient.connect('mongodb://passenger:scully@ds131904-a0.mlab.com:31904/karl-siriann-prod', (err, mongoDb) => {
+  var app = express();
 
   app.use(bodyParser.json());
   app.use(require('body-parser').urlencoded({ extended: true }));
