@@ -27,7 +27,7 @@ class ParticipantList extends React.Component {
   }
 
   render() {
-    const { participants, isLoading, filteredParticipants } = this.props;
+    const { participants, isLoading, filteredParticipants, activeTags } = this.props;
     const { isOpen, image } = this.state;
 
     if (isLoading) {
@@ -64,7 +64,7 @@ class ParticipantList extends React.Component {
       });
 
     return (
-      <div style={{ paddingTop: 10 }}>
+      <div style={{ paddingTop: activeTags.length ? 20 : 10 }}>
         {isOpen &&
           <Lightbox
             mainSrc={image}
