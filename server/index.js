@@ -93,7 +93,7 @@ MongoClient.connect('mongodb://passenger:scully@ds131904-a0.mlab.com:31904/karl-
     });
 
   app.get('/participants',
-    [ensureLogin, cache('1 month')],
+    [ensureLogin, cache('1 week')],
     (req, res) => {
       process.nextTick(() => {
         mongoDb.collection('participants').find({}, {agentName: 0}).sort().toArray(function(err, results) {
