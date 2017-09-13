@@ -1,9 +1,10 @@
 import * as types from '../constants/ActionTypes';
+import { isLocalStorageNameSupported } from '../actions/user';
 
 const getShowWalkthrough = () => {
   let hasVisited = false;
   // Why do we do this in 2017?
-  if (window.localStorage) {
+  if (isLocalStorageNameSupported()) {
     hasVisited = window.localStorage.getItem('Mingling::hasVisited') || false;
   }
   return !hasVisited;

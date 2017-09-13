@@ -15,7 +15,11 @@ export const getProfile = () => dispatch => {
 }
 
 export const closeWalkthrough = () => dispatch => {
-  window.localStorage.setItem('Mingling::hasVisited', true);
+
+  if (isLocalStorageNameSupported()) {
+    window.localStorage.setItem('Mingling::hasVisited', true);
+  }
+
   dispatch(dispatchable(
     types.CLOSE_WALKTHROUGH, null
   ));
@@ -31,4 +35,15 @@ export const clearUserFromState = () => dispatch => {
   dispatch(dispatchable(
     types.CLEAR_USER_FROM_STATE, null
   ));
+}
+
+export const isLocalStorageNameSupported = () => {
+  var testKey = 'test', storage = window.localStorage;
+  try {
+    storage.setItem(testKey, '1');
+    storage.removeItem(testKey);
+    return true
+  } catch (error) {
+    return false;
+  }
 }
