@@ -7,7 +7,6 @@ var apicache = require('apicache');
 var compression = require('compression')
 
 
-
 const port = process.env.port || 8989;
 const expressSession = require('express-session');
 const flash = require('connect-flash');
@@ -16,7 +15,7 @@ const MongoClient = require('mongodb').MongoClient;
 const cache = apicache.middleware;
 
 
-MongoClient.connect('mongodb://passenger:scully@ds131904-a0.mlab.com:31904/karl-siriann-prod', (err, mongoDb) => {
+MongoClient.connect('mongodb://testuser:testuser@ds017776.mlab.com:17776/macgyver-test', (err, mongoDb) => {
   var app = express();
 
   app.use(bodyParser.json());
