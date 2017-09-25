@@ -15,8 +15,12 @@ const MongoClient = require('mongodb').MongoClient;
 const cache = apicache.middleware;
 
 
-MongoClient.connect('mongodb://testuser:testuser@ds017776.mlab.com:17776/macgyver-test', (err, mongoDb) => {
+MongoClient.connect('mongodb://testuser:hei@ds017776.mlab.com:17776/macgyver-test', (err, mongoDb) => {
   var app = express();
+
+  if (err) {
+    console.log("err", err);
+  }
 
   app.use(bodyParser.json());
   app.use(require('body-parser').urlencoded({ extended: true }));
